@@ -11,6 +11,7 @@
 MODULE SUPOL_MOD
 CONTAINS
 SUBROUTINE SUPOL(KNSMAX,PDDMU,PFN,PDDPOL)
+!DEC$ OPTIMIZE:1
 
 !**** *SUPOL * - Routine to compute the Legendre polynomials
 
@@ -60,6 +61,8 @@ SUBROUTINE SUPOL(KNSMAX,PDDMU,PFN,PDDPOL)
 !        Nils Wedi + Mats Hamrud, 2009-02-05 revised following Swarztrauber, 2002
 !        R. El Khatib 30-Apr-2013 Open-MP parallelization
 !      F. Vana  05-Mar-2015  Support for single precision
+!        R. El Khatib 03-Sep-2024 Had to reduce optimization level to 1 with Intel
+!        compiler or wind could turn to crazy values at some places.
 !     ------------------------------------------------------------------
 
 USE PARKIND1  ,ONLY : JPRD, JPIM
